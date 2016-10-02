@@ -11,18 +11,18 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include <tr1/unordered_set>
+#include <unordered_set>
 #include "boggle.h"
 
 // Constructor
 Boggle::Boggle(const char* board_filename, const char* dict_filename) :
-    m_dict(), m_solns(), m_board(), m_solved(false) {
+    m_solved(false), m_board(), m_dict(), m_solns() {
     init(board_filename, dict_filename); // defer to initialization helper
 }
 
 // Constructor
 Boggle::Boggle(const std::string &board_filename, const std::string &dict_filename) :
-    m_dict(), m_solns(), m_board(), m_solved(false) {
+    m_solved(false), m_board(), m_dict(), m_solns() {
     init(board_filename.c_str(), dict_filename.c_str()); // defer to initialization helper
 }
 
@@ -78,7 +78,7 @@ void Boggle::init(const char* board_filename, const char* dict_filename) {
         if (first_line) {
             m_board_w = line.size(); // set width of board to width of row
             first_line = false;
-        } else if (line.size() != m_board_w) {
+        } else if (line.size() != (unsigned int)m_board_w) {
             throw std::runtime_error(std::string("Malformed board file: rows of differing length"));
         }
         m_board.push_back(line);

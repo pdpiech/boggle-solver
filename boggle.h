@@ -10,7 +10,7 @@
 
 #include <string>
 #include <vector>
-#include <tr1/unordered_set>
+#include <unordered_set>
 
 // Minimum length of valid words from official Boggle game rules
 const static unsigned int BOGGLE_MIN_VALID_WORD_LENGTH = 3;
@@ -19,7 +19,7 @@ const static unsigned int BOGGLE_MIN_VALID_WORD_LENGTH = 3;
 class Boggle {
 private:
     // Typedefs
-    typedef std::tr1::unordered_set<std::string> words_set; // boggle internal set type
+    typedef std::unordered_set<std::string> words_set; // boggle internal set type
 
     // Member variables
     bool m_solved; // Indicates if solve method completed successfully
